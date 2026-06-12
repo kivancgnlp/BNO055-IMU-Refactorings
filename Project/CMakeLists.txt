@@ -11,8 +11,10 @@ add_executable(c_project
         src/bno055.h
         src/Test_main.c)
 
-add_executable(cpp_project new_driver_src/Bno055.cpp new_driver_src/Bno055.h
-        new_driver_src/Bno055_MockUp.cpp
-        new_driver_src/Bno055_MockUp.h
+add_executable(cpp_project new_driver_src/Bno055_Driver.cpp new_driver_src/Bno055_Driver.h
         new_driver_src/New_Test_Main.cpp
+        new_driver_src/Bno055_I2C_Interface.cpp
+        new_driver_src/Bno055_I2C_Interface.h
+        new_driver_src/Bno055_I2C_Mock_Interface.cpp
+        new_driver_src/Bno055_I2C_Mock_Interface.h
 )

@@ -2,6 +2,8 @@
 // Created by Kivanc Gunalp on 12.06.2026.
 //
 
+#include <stdint.h>
+
 #include "bno055.h"
 #include "stdio.h"
 
@@ -42,6 +44,11 @@ int main(int argc, char *argv[]) {
     double x, y, z;
 
     printf("Reading gravity vector\n");
+
+    //---
+    uint16_t gravity_value;
+    bno055_read_gravity_x(&gravity_value);
+    //---
     check_success(bno055_convert_gravity_double_x_msq(&x));
     check_success(bno055_convert_gravity_double_y_msq(&y));
     check_success(bno055_convert_gravity_double_z_msq(&z));

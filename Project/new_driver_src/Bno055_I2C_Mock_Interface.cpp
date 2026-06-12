@@ -1,13 +1,13 @@
 //
-// Created by Kivanc Gunalp on 12.06.2026.
+// Created by Kiv on 6/12/2026.
 //
 
-#include "Bno055_MockUp.h"
+#include "Bno055_I2C_Mock_Interface.h"
 
 #include <cstdio>
 
-namespace kiv {
-    Bno055_MockUp::Bno055_MockUp() {
+namespace kiv::embedded::drivers::imu {
+    Bno055_I2C_Mock_Interface::Bno055_I2C_Mock_Interface() {
 
         m_emulation_register_map_page0[0] = 0xa0; // Chip ID
         m_emulation_register_map_page0[1] = 0xfb; // ACC ID
@@ -45,15 +45,10 @@ namespace kiv {
         //Pitch
         m_emulation_register_map_page0[0x1f] = 1;
         m_emulation_register_map_page0[0x1e] = 90;
-
-
-
     }
 
-    Bno055_MockUp::~Bno055_MockUp() {
-    }
 
-    bool Bno055_MockUp::i2c_bus_write(uint8_t dev_addr, uint8_t reg_addr, uint8_t *reg_data, uint8_t cnt) {
+    bool Bno055_I2C_Mock_Interface::i2c_bus_write(uint8_t dev_addr, uint8_t reg_addr, uint8_t *reg_data, uint8_t cnt) {
 
         printf("BNO055 I2C bus write called. dev_addr : %x, reg_addr : %x, first data : %x, cnt : %d\n",dev_addr,reg_addr,reg_data[0],cnt);
 
@@ -73,7 +68,7 @@ namespace kiv {
         return true;
     }
 
-    bool Bno055_MockUp::i2c_bus_read(uint8_t dev_addr, uint8_t reg_addr, uint8_t *reg_data, uint8_t cnt) {
+    bool Bno055_I2C_Mock_Interface::i2c_bus_read(uint8_t dev_addr, uint8_t reg_addr, uint8_t *reg_data, uint8_t cnt) {
 
         printf("BNO055 I2C bus read called. dev_addr : %x, reg_addr : %x, first data : %x, cnt : %d\n",dev_addr,reg_addr,reg_data[0],cnt);
 
@@ -89,7 +84,7 @@ namespace kiv {
         return true;
     }
 
-    void Bno055_MockUp::delay_msec(uint32_t msec) {
+    void Bno055_I2C_Mock_Interface::delay_msec(uint32_t msec) {
 
         printf("BNO055_delay_msek called with %d ms\n", msec);
     }
