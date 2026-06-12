@@ -1,0 +1,40 @@
+BNO055 I2C bus write called. dev_addr : 28, reg_addr : 7, first data : 0, cnt : 1
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 0, first data : 0, cnt : 1
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 1, first data : a0, cnt : 1
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 2, first data : fb, cnt : 1
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 3, first data : 32, cnt : 1
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 6, first data : f, cnt : 1
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 4, first data : 0, cnt : 2
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 7, first data : 0, cnt : 1
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 3d, first data : 0, cnt : 1
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 3e, first data : 0, cnt : 1
+BNO055 I2C bus write called. dev_addr : 28, reg_addr : 3e, first data : 0, cnt : 1
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 3d, first data : 0, cnt : 1
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 3d, first data : 0, cnt : 1
+BNO055 I2C bus write called. dev_addr : 28, reg_addr : 3d, first data : c, cnt : 1
+BNO055_delay_msek called with 600 ms
+Reading gravity vector
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 2e, first data : 0, cnt : 2
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 30, first data : 0, cnt : 2
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 32, first data : 0, cnt : 2
+Gravity vector : (x: 2.76, y: 3.16, z: 3.56) m/sec2
+Reading orientation vector
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 3b, first data : 0, cnt : 1
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 1c, first data : 0, cnt : 2
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 3b, first data : 0, cnt : 1
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 1e, first data : 0, cnt : 2
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 3b, first data : 0, cnt : 1
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 1a, first data : 0, cnt : 2
+Orientation vector : (x: 19.75, y: 21.62, z: 17.88)
+Powering down BNO055
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 3d, first data : 0, cnt : 1
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 3d, first data : 0, cnt : 1
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 3d, first data : 0, cnt : 1
+BNO055 I2C bus write called. dev_addr : 28, reg_addr : 3d, first data : 0, cnt : 1
+BNO055_delay_msek called with 20 ms
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 3e, first data : 0, cnt : 1
+BNO055 I2C bus write called. dev_addr : 28, reg_addr : 3e, first data : 2, cnt : 1
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 3d, first data : 0, cnt : 1
+BNO055 I2C bus read called. dev_addr : 28, reg_addr : 3d, first data : 0, cnt : 1
+BNO055 I2C bus write called. dev_addr : 28, reg_addr : 3d, first data : c, cnt : 1
+BNO055_delay_msek called with 600 ms
