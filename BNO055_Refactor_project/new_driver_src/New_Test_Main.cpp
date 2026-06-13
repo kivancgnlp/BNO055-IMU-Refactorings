@@ -35,10 +35,20 @@ int main(int argc, char *argv[]) {
 
 
     if (auto gravity = bno055_driver.read_gravity_vector_in_msq()) {
-        auto [x,y,z] = gravity.value();
+        const auto [x,y,z] = gravity.value();
         printf("Gravity vector : (x: %.2f, y: %.2f, z: %.2f) m/sec2\n", x, y, z);
 
     }
+
+    if (auto gravity = bno055_driver.read_euler_orientation_vector_in_degrees()) {
+        const auto [x,y,z] = gravity.value();
+        printf("Orientation vector : (x: %.2f, y: %.2f, z: %.2f) degree\n", x, y, z);
+
+    }
+
+    bno055_driver.set_power_mode(PowerMode::SUSPEND);
+
+
 
 
 
