@@ -22,4 +22,8 @@ int main(int argc, char *argv[]) {
     assert(some_value == 0x17);
     std::cout << std::hex <<(unsigned)some_value << std::endl;
 
+    some_value = get_bit_field<0,3>(some_value);
+    assert(some_value == 0x07);
+    std::cout << std::hex <<(unsigned)some_value << std::endl;
+
 }

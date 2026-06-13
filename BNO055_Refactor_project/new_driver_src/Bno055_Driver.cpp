@@ -4,9 +4,48 @@
 
 #include "Bno055_Driver.h"
 
+#include <array>
+
 #include "BitUtils.h"
 
 namespace kiv::embedded::drivers::imu {
+
+
+    /* PAGE0 REGISTER DEFINITION START*/
+    static constexpr uint8_t CHIP_ID_ADDR = 0;
+    static constexpr uint8_t ACCEL_REV_ID_ADDR  = 1;
+    static constexpr uint8_t MAG_REV_ID_ADDR  = 2;
+    static constexpr uint8_t GYR_REV_ID_ADDR  = 3;
+    static constexpr uint8_t SW_REV_ID_LSB_ADDR  = 4;
+    static constexpr uint8_t SW_REV_ID_MSB_ADDR  = 5;
+    static constexpr uint8_t PAGE_ID_ADDR = 7;
+    static constexpr uint8_t OPR_MODE_ADDR = 0X3D;
+    static constexpr uint8_t PWR_MODE_ADDR = 0X3E;
+
+    /*Gravity data registers*/
+    static constexpr uint8_t GRAVITY_DATA_X_LSB_ADDR = 0X2E;
+    static constexpr uint8_t GRAVITY_DATA_Y_LSB_ADDR = 0X30;
+    static constexpr uint8_t GRAVITY_DATA_Z_LSB_ADDR = 0X32;
+
+    /*Euler data registers*/
+    static constexpr uint8_t EULER_HEADING_LSB_ADDR = 0X1A;
+    static constexpr uint8_t EULER_ROLL_LSB_ADDR = 0X1C;
+    static constexpr uint8_t EULER_PITCH_LSB_ADDR = 0X1E;
+
+    //Scale factors
+    static constexpr float GRAVITY_DIV_MSQ = 100.0;
+    static constexpr float EULER_DIV_DEG  = 16.0;
+
+    constexpr uint8_t get_adr(OrientationAxis item) {
+        switch (item) {
+            case OrientationAxis::HEADING: return EULER_HEADING_LSB_ADDR;
+            case OrientationAxis::ROLL: return EULER_ROLL_LSB_ADDR;
+            case OrientationAxis::PITCH: return EULER_PITCH_LSB_ADDR;
+        }
+
+        assert(false);
+    }
+
     bool Bno055_Driver::get_operation_mode(OperationMode &op_mode) {
 
         bool ok = assure_page_id(0);

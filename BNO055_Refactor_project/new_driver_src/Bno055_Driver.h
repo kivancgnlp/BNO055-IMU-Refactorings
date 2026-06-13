@@ -4,14 +4,12 @@
 
 #ifndef PROJECT_BNO055_H
 #define PROJECT_BNO055_H
+
 #include <cassert>
-#include <cstdint>
-
-
 #include "Bno055_I2C_Interface.h"
-#include "Bno055_I2C_Mock_Interface.h"
 #include <tuple>
 #include <optional>
+#include <string_view>
 
 namespace kiv::embedded::drivers::imu {
 
@@ -45,54 +43,28 @@ namespace kiv::embedded::drivers::imu {
         Z
     };
 
+
     enum class OrientationAxis : uint8_t {
         HEADING,
         ROLL,
         PITCH
     };
 
-    /* PAGE0 REGISTER DEFINITION START*/
-    static constexpr uint8_t CHIP_ID_ADDR = 0;
-    static constexpr uint8_t ACCEL_REV_ID_ADDR  = 1;
-    static constexpr uint8_t MAG_REV_ID_ADDR  = 2;
-    static constexpr uint8_t GYR_REV_ID_ADDR  = 3;
-    static constexpr uint8_t SW_REV_ID_LSB_ADDR  = 4;
-    static constexpr uint8_t SW_REV_ID_MSB_ADDR  = 5;
-    static constexpr uint8_t PAGE_ID_ADDR = 7;
-    static constexpr uint8_t OPR_MODE_ADDR = 0X3D;
-    static constexpr uint8_t PWR_MODE_ADDR = 0X3E;
-
-    /*Gravity data registers*/
-    static constexpr uint8_t GRAVITY_DATA_X_LSB_ADDR = 0X2E;
-    static constexpr uint8_t GRAVITY_DATA_Y_LSB_ADDR = 0X30;
-    static constexpr uint8_t GRAVITY_DATA_Z_LSB_ADDR = 0X32;
-
-    /*Euler data registers*/
-    static constexpr uint8_t EULER_HEADING_LSB_ADDR = 0X1A;
-    static constexpr uint8_t EULER_ROLL_LSB_ADDR = 0X1C;
-    static constexpr uint8_t EULER_PITCH_LSB_ADDR = 0X1E;
-
-
-    constexpr uint8_t get_adr(OrientationAxis item) {
+    constexpr std::string_view get_text_rep(OrientationAxis item) {
         switch (item) {
-            case OrientationAxis::HEADING: return EULER_HEADING_LSB_ADDR;
-            case OrientationAxis::ROLL: return EULER_ROLL_LSB_ADDR;
-            case OrientationAxis::PITCH: return EULER_PITCH_LSB_ADDR;
+            case OrientationAxis::HEADING: return "Heading";
+            case OrientationAxis::ROLL: return "Roll";
+            case OrientationAxis::PITCH: return "Pitch";
         }
-
         assert(false);
     }
-
 
     class Bno055_Driver {
 
     private:
 
-
         static constexpr uint8_t I2C_ADDR = 0x28;
 
-        static constexpr float GRAVITY_DIV_MSQ = 100.0;
-        static constexpr float EULER_DIV_DEG  = 16.0;
 
         //
         uint8_t m_chip_id{};

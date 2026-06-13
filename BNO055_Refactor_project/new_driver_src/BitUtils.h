@@ -20,9 +20,15 @@ consteval uint8_t get_bit_mask() {
 template <uint8_t start_bit, uint8_t bit_count>
 constexpr void update_bit_field(uint8_t &original_value, uint8_t bit_field_to_embed) {
     constexpr uint8_t mask = get_bit_mask<start_bit, bit_count>();
-    assert((bit_field_to_embed >> bit_count) == 0); //"field to embed exceeds it's size, possible bug"
+    assert((bit_field_to_embed >> bit_count) == 0 && "field to embed exceeds its size, possible bug");
     const uint8_t shifted = static_cast<uint8_t>((bit_field_to_embed << start_bit) & mask);
     original_value = static_cast<uint8_t>((original_value & ~mask) | shifted);
+}
+
+template <uint8_t start_bit, uint8_t bit_count>
+[[nodiscard]] constexpr uint8_t get_bit_field(uint8_t value) {
+    constexpr uint8_t mask = get_bit_mask<start_bit, bit_count>();
+    return static_cast<uint8_t>((value & mask) >> start_bit);
 }
 
 
